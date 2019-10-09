@@ -30,3 +30,5 @@ md.book_movie_music = sequelize.define('book_movie_music', {
     });
 
 module.exports=md;
+
+// mysql> select a.* from album a join (select ceil(rand()*max(id)) as id from album) as b on a.id=b.id;
