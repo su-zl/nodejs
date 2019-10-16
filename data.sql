@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80015
 File Encoding         : 65001
 
-Date: 2019-10-09 11:18:26
+Date: 2019-10-16 17:04:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -21,18 +21,38 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `album`;
 CREATE TABLE `album` (
   `id` int(1) NOT NULL AUTO_INCREMENT,
-  `type` varchar(10) NOT NULL,
+  `type` varchar(20) DEFAULT NULL,
   `url` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of album
 -- ----------------------------
-INSERT INTO `album` VALUES ('1', 'knowless', 'knowless_1.jpg');
-INSERT INTO `album` VALUES ('2', 'knowless', 'knowless_2.jpg');
-INSERT INTO `album` VALUES ('3', 'knowless', 'knowless_3.jpg');
-INSERT INTO `album` VALUES ('4', 'knowless', 'knowless_4.jpg');
+INSERT INTO `album` VALUES ('1', 'knowless', '/timeAlbum/knowless_1.jpg');
+INSERT INTO `album` VALUES ('2', 'knowless', '/timeAlbum/knowless_2.jpg');
+INSERT INTO `album` VALUES ('3', 'knowless', '/timeAlbum/knowless_3.jpg');
+INSERT INTO `album` VALUES ('4', 'knowless', '/timeAlbum/knowless_4.jpg');
+INSERT INTO `album` VALUES ('5', 'primaryschool', '/timeAlbum/primaryschool_1.jpg');
+INSERT INTO `album` VALUES ('6', 'primaryschool', '/timeAlbum/primaryschool_2.jpg');
+INSERT INTO `album` VALUES ('7', 'primaryschool', '/timeAlbum/primaryschool_3.jpg');
+INSERT INTO `album` VALUES ('8', 'primaryschool', '/timeAlbum/primaryschool_4.jpg ');
+INSERT INTO `album` VALUES ('9', 'middleschool', '/timeAlbum/middleschool_1.jpg');
+INSERT INTO `album` VALUES ('10', 'middleschool', '/timeAlbum/middleschool_2.jpg');
+INSERT INTO `album` VALUES ('11', 'middleschool', '/timeAlbum/middleschool_3.jpg');
+INSERT INTO `album` VALUES ('12', 'middleschool', '/timeAlbum/middleschool_4.jpg');
+INSERT INTO `album` VALUES ('13', 'highschool', '/timeAlbum/highschool_1.jpg');
+INSERT INTO `album` VALUES ('14', 'highschool', '/timeAlbum/highschool_2.jpg');
+INSERT INTO `album` VALUES ('15', 'highschool', '/timeAlbum/highschool_3.jpg');
+INSERT INTO `album` VALUES ('16', 'highschool', '/timeAlbum/highschool_4.jpg ');
+INSERT INTO `album` VALUES ('17', 'university', '/timeAlbum/university_1.jpg');
+INSERT INTO `album` VALUES ('18', 'university', '/timeAlbum/university_2.jpg');
+INSERT INTO `album` VALUES ('19', 'university', '/timeAlbum/university_3.jpg');
+INSERT INTO `album` VALUES ('20', 'university', '/timeAlbum/university_4.jpg ');
+INSERT INTO `album` VALUES ('21', 'atwork', '/timeAlbum/atwork_1.jpg');
+INSERT INTO `album` VALUES ('22', 'atwork', '/timeAlbum/atwork_2.jpg');
+INSERT INTO `album` VALUES ('23', 'atwork', '/timeAlbum/atwork_3.jpg');
+INSERT INTO `album` VALUES ('24', 'atwork', '/timeAlbum/atwork_4.jpg ');
 
 -- ----------------------------
 -- Table structure for article
@@ -136,7 +156,7 @@ DROP TABLE IF EXISTS `whimsy`;
 CREATE TABLE `whimsy` (
   `id` int(1) NOT NULL AUTO_INCREMENT,
   `time` datetime NOT NULL,
-  `img_urls` varchar(300) NOT NULL,
+  `img_src` varchar(300) DEFAULT NULL,
   `content` varchar(300) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
@@ -144,9 +164,9 @@ CREATE TABLE `whimsy` (
 -- ----------------------------
 -- Records of whimsy
 -- ----------------------------
-INSERT INTO `whimsy` VALUES ('1', '2019-09-26 12:00:00', '../assets/img/timeAlbum/1.jpg&../assets/img/timeAlbum/2.jpg', '天上一只鹅，地上一只鹅，天上那只肥鹅鹅爱上地上那只瘦鹅鹅，鹅飞鹅打鹅碰鹅。');
-INSERT INTO `whimsy` VALUES ('2', '2019-09-27 12:00:00', '../assets/img/timeAlbum/3.jpg&../assets/img/timeAlbum/4.jpg', '天上一只鹅，地上一只鹅，天上那只肥鹅鹅爱上地上那只瘦鹅鹅，鹅飞鹅打鹅碰鹅。');
-INSERT INTO `whimsy` VALUES ('3', '2019-09-28 12:00:00', '../assets/img/timeAlbum/5.jpg&../assets/img/timeAlbum/6.jpg', '天上一只鹅，地上一只鹅，天上那只肥鹅鹅爱上地上那只瘦鹅鹅，鹅飞鹅打鹅碰鹅。');
-INSERT INTO `whimsy` VALUES ('4', '2019-09-29 12:00:00', '../assets/img/timeAlbum/7.jpg&../assets/img/timeAlbum/8.jpg', '天上一只鹅，地上一只鹅，天上那只肥鹅鹅爱上地上那只瘦鹅鹅，鹅飞鹅打鹅碰鹅。');
-INSERT INTO `whimsy` VALUES ('5', '2019-09-30 12:00:00', '../assets/img/timeAlbum/9.jpg&../assets/img/timeAlbum/10.jpg', '天上一只鹅，地上一只鹅，天上那只肥鹅鹅爱上地上那只瘦鹅鹅，鹅飞鹅打鹅碰鹅。');
-INSERT INTO `whimsy` VALUES ('6', '2019-10-01 12:00:00', '../assets/img/timeAlbum/11.jpg&../assets/img/timeAlbum/12.jpg', '天上一只鹅，地上一只鹅，天上那只肥鹅鹅爱上地上那只瘦鹅鹅，鹅飞鹅打鹅碰鹅。');
+INSERT INTO `whimsy` VALUES ('1', '2019-09-26 12:00:00', '/book_movie_music/whimsy/1.jpg&/book_movie_music/whimsy/2.jpg', '天上一只鹅，地上一只鹅，天上那只肥鹅鹅爱上地上那只瘦鹅鹅，鹅飞鹅打鹅碰鹅。');
+INSERT INTO `whimsy` VALUES ('2', '2019-09-27 12:00:00', '/book_movie_music/whimsy/3.jpg&/book_movie_music/whimsy/4.jpg', '天上一只鹅，地上一只鹅，天上那只肥鹅鹅爱上地上那只瘦鹅鹅，鹅飞鹅打鹅碰鹅。');
+INSERT INTO `whimsy` VALUES ('3', '2019-09-28 12:00:00', '/book_movie_music/whimsy/5.jpg&/book_movie_music/whimsy/6.jpg', '天上一只鹅，地上一只鹅，天上那只肥鹅鹅爱上地上那只瘦鹅鹅，鹅飞鹅打鹅碰鹅。');
+INSERT INTO `whimsy` VALUES ('4', '2019-09-29 12:00:00', '/book_movie_music/whimsy/7.jpg&/book_movie_music/whimsy/8.jpg', '天上一只鹅，地上一只鹅，天上那只肥鹅鹅爱上地上那只瘦鹅鹅，鹅飞鹅打鹅碰鹅。');
+INSERT INTO `whimsy` VALUES ('5', '2019-09-30 12:00:00', '/book_movie_music/whimsy/9.jpg&/book_movie_music/whimsy/10.jpg', '天上一只鹅，地上一只鹅，天上那只肥鹅鹅爱上地上那只瘦鹅鹅，鹅飞鹅打鹅碰鹅。');
+INSERT INTO `whimsy` VALUES ('6', '2019-10-01 12:00:00', '/book_movie_music/whimsy/11.jpg&/book_movie_music/whimsy/12.jpg', '天上一只鹅，地上一只鹅，天上那只肥鹅鹅爱上地上那只瘦鹅鹅，鹅飞鹅打鹅碰鹅。');

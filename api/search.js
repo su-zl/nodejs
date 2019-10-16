@@ -28,6 +28,78 @@ md.book_movie_music = sequelize.define('book_movie_music', {
         timestamps: false,
         freezeTableName: true // Model 对应的表名将与model名相同
     });
+//相册首页
+md.time_travel = sequelize.query('select count(*)as count,type,max(url) as url from album group by type',{ type: sequelize.QueryTypes.SELECT});
+//相册详情
+md.time_album = sequelize.define('album', {
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true
+    },
+    type: Sequelize.STRING(20),
+    url: Sequelize.STRING(100)
+}, {
+        timestamps: false,
+        freezeTableName: true // Model 对应的表名将与model名相同
+    });
+
+//文章首页
+md.article = sequelize.define('article',{
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true
+    },
+    day:Sequelize.INTEGER,
+    month: Sequelize.STRING(10),
+    title: Sequelize.STRING(100),
+    content: Sequelize.STRING(100),
+}, {
+        timestamps: false,
+        freezeTableName: true // Model 对应的表名将与model名相同
+    });
+//文章详情
+md.article_detail = sequelize.define('article_detail',{
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true
+    },
+    article_id:Sequelize.INTEGER,
+    class: Sequelize.STRING(20),
+    content: Sequelize.STRING(1000)
+}, {
+        timestamps: false,
+        freezeTableName: true // Model 对应的表名将与model名相同
+    });
+
+
+//随想
+md.whimsy_content = sequelize.define('whimsy',{
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true
+    },
+    time:Sequelize.DATE,
+    img_src: Sequelize.STRING(300),
+    content: Sequelize.STRING(300)
+}, {
+        timestamps: false,
+        freezeTableName: true // Model 对应的表名将与model名相同
+    });
+
+md.whimsy_comment = sequelize.define('comment',{
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true
+    },
+    item_id:Sequelize.INTEGER,
+    type:Sequelize.STRING(10),
+    date:Sequelize.DATEONLY,
+    content: Sequelize.STRING(100)
+}, {
+        timestamps: false,
+        freezeTableName: true // Model 对应的表名将与model名相同
+    });
+
 
 module.exports=md;
 
