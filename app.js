@@ -4,6 +4,7 @@ const rest=require('./api/rest');
 const cors = require('koa2-cors');
 const path = require('path');
 const serve = require('koa-static');
+const bodyParser=require('koa-bodyparser');
 
 const app=new Koa();
 //跨域
@@ -11,6 +12,7 @@ app.use(cors());
 //静态文件
 app.use(serve(__dirname+'/static/')); 
 
+app.use(bodyParser());
 app.use(rest.restify());
 app.use(router.routes());
 

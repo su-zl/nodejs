@@ -78,7 +78,7 @@ md.whimsy_content = sequelize.define('whimsy',{
         type: Sequelize.INTEGER,
         primaryKey: true
     },
-    time:Sequelize.DATE,
+    date:Sequelize.DATE,
     img_src: Sequelize.STRING(300),
     content: Sequelize.STRING(300)
 }, {
@@ -86,12 +86,13 @@ md.whimsy_content = sequelize.define('whimsy',{
         freezeTableName: true // Model 对应的表名将与model名相同
     });
 
-md.whimsy_comment = sequelize.define('comment',{
+md.comment = sequelize.define('comment',{
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true
     },
     item_id:Sequelize.INTEGER,
+    name:Sequelize.STRING(100),
     type:Sequelize.STRING(10),
     date:Sequelize.DATEONLY,
     content: Sequelize.STRING(100)
@@ -99,7 +100,6 @@ md.whimsy_comment = sequelize.define('comment',{
         timestamps: false,
         freezeTableName: true // Model 对应的表名将与model名相同
     });
-
 
 module.exports=md;
 
