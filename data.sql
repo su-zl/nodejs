@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80015
 File Encoding         : 65001
 
-Date: 2019-10-16 17:04:53
+Date: 2019-11-01 16:52:38
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -137,17 +137,49 @@ CREATE TABLE `comment` (
   `id` int(1) NOT NULL AUTO_INCREMENT,
   `item_id` int(1) NOT NULL,
   `type` varchar(10) NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
   `date` date NOT NULL,
   `content` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of comment
 -- ----------------------------
-INSERT INTO `comment` VALUES ('1', '1', 'whimsy', '2019-09-26', '哈哈哈');
-INSERT INTO `comment` VALUES ('2', '1', 'message', '2019-09-27', '我是一只鱼');
-INSERT INTO `comment` VALUES ('3', '1', 'whimsy', '2019-09-29', '我来了我来了');
+INSERT INTO `comment` VALUES ('1', '1', 'whimsy', '张飞', '2019-09-26', '哈哈哈');
+INSERT INTO `comment` VALUES ('2', '1', 'message', '关羽', '2019-09-27', '我是一只鱼');
+INSERT INTO `comment` VALUES ('3', '1', 'whimsy', '刘备', '2019-09-29', '我来了我来了');
+INSERT INTO `comment` VALUES ('4', '1', 'message', '卤粉', '2019-09-26', '一块五');
+INSERT INTO `comment` VALUES ('5', '1', 'message', '香干', '2019-09-27', '五毛一片');
+INSERT INTO `comment` VALUES ('8', '1', 'message', '腊肠', '2019-09-29', '一块一根');
+INSERT INTO `comment` VALUES ('9', '2', 'message', 'test', '2019-10-17', '123');
+INSERT INTO `comment` VALUES ('10', '3', 'message', 'test', '2019-10-17', '456');
+INSERT INTO `comment` VALUES ('11', '4', 'message', 'test', '2019-10-17', '789');
+INSERT INTO `comment` VALUES ('12', '5', 'message', 'test', '2019-10-17', '789');
+INSERT INTO `comment` VALUES ('13', '6', 'message', 'test', '2019-10-17', '测试');
+INSERT INTO `comment` VALUES ('14', '1', 'whimsy', 'test', '2019-10-17', '123');
+INSERT INTO `comment` VALUES ('15', '2', 'article', 'test', '2019-10-17', '456');
+INSERT INTO `comment` VALUES ('16', '1', 'article', 'test', '2019-10-17', '789');
+INSERT INTO `comment` VALUES ('17', '1', 'whimsy', 'test', '2019-10-17', '1010');
+INSERT INTO `comment` VALUES ('18', '2', 'article', 'test', '2019-10-17', '测试文章');
+INSERT INTO `comment` VALUES ('19', '1', 'article', 'test', '2019-10-18', '123');
+INSERT INTO `comment` VALUES ('20', '2', 'whimsy', 'test', '2019-10-18', '222');
+
+-- ----------------------------
+-- Table structure for user_img
+-- ----------------------------
+DROP TABLE IF EXISTS `user_img`;
+CREATE TABLE `user_img` (
+  `id` int(1) NOT NULL AUTO_INCREMENT,
+  `path` varchar(100) DEFAULT NULL,
+  `name` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user_img
+-- ----------------------------
+INSERT INTO `user_img` VALUES ('1', '/book_movie_music/book/book_1.jpg', 'admin');
 
 -- ----------------------------
 -- Table structure for whimsy
@@ -155,7 +187,7 @@ INSERT INTO `comment` VALUES ('3', '1', 'whimsy', '2019-09-29', '我来了我来
 DROP TABLE IF EXISTS `whimsy`;
 CREATE TABLE `whimsy` (
   `id` int(1) NOT NULL AUTO_INCREMENT,
-  `time` datetime NOT NULL,
+  `date` date DEFAULT NULL,
   `img_src` varchar(300) DEFAULT NULL,
   `content` varchar(300) NOT NULL,
   PRIMARY KEY (`id`)
@@ -164,9 +196,9 @@ CREATE TABLE `whimsy` (
 -- ----------------------------
 -- Records of whimsy
 -- ----------------------------
-INSERT INTO `whimsy` VALUES ('1', '2019-09-26 12:00:00', '/book_movie_music/whimsy/1.jpg&/book_movie_music/whimsy/2.jpg', '天上一只鹅，地上一只鹅，天上那只肥鹅鹅爱上地上那只瘦鹅鹅，鹅飞鹅打鹅碰鹅。');
-INSERT INTO `whimsy` VALUES ('2', '2019-09-27 12:00:00', '/book_movie_music/whimsy/3.jpg&/book_movie_music/whimsy/4.jpg', '天上一只鹅，地上一只鹅，天上那只肥鹅鹅爱上地上那只瘦鹅鹅，鹅飞鹅打鹅碰鹅。');
-INSERT INTO `whimsy` VALUES ('3', '2019-09-28 12:00:00', '/book_movie_music/whimsy/5.jpg&/book_movie_music/whimsy/6.jpg', '天上一只鹅，地上一只鹅，天上那只肥鹅鹅爱上地上那只瘦鹅鹅，鹅飞鹅打鹅碰鹅。');
-INSERT INTO `whimsy` VALUES ('4', '2019-09-29 12:00:00', '/book_movie_music/whimsy/7.jpg&/book_movie_music/whimsy/8.jpg', '天上一只鹅，地上一只鹅，天上那只肥鹅鹅爱上地上那只瘦鹅鹅，鹅飞鹅打鹅碰鹅。');
-INSERT INTO `whimsy` VALUES ('5', '2019-09-30 12:00:00', '/book_movie_music/whimsy/9.jpg&/book_movie_music/whimsy/10.jpg', '天上一只鹅，地上一只鹅，天上那只肥鹅鹅爱上地上那只瘦鹅鹅，鹅飞鹅打鹅碰鹅。');
-INSERT INTO `whimsy` VALUES ('6', '2019-10-01 12:00:00', '/book_movie_music/whimsy/11.jpg&/book_movie_music/whimsy/12.jpg', '天上一只鹅，地上一只鹅，天上那只肥鹅鹅爱上地上那只瘦鹅鹅，鹅飞鹅打鹅碰鹅。');
+INSERT INTO `whimsy` VALUES ('1', '2019-09-26', '/whimsy/1.jpg&/whimsy/2.jpg', '天上一只鹅，地上一只鹅，天上那只肥鹅鹅爱上地上那只瘦鹅鹅，鹅飞鹅打鹅碰鹅。');
+INSERT INTO `whimsy` VALUES ('2', '2019-09-27', '/whimsy/3.jpg&/whimsy/4.jpg', '天上一只鹅，地上一只鹅，天上那只肥鹅鹅爱上地上那只瘦鹅鹅，鹅飞鹅打鹅碰鹅。');
+INSERT INTO `whimsy` VALUES ('3', '2019-09-28', '/whimsy/5.jpg&/whimsy/6.jpg', '天上一只鹅，地上一只鹅，天上那只肥鹅鹅爱上地上那只瘦鹅鹅，鹅飞鹅打鹅碰鹅。');
+INSERT INTO `whimsy` VALUES ('4', '2019-09-29', '/whimsy/7.jpg&/whimsy/8.jpg', '天上一只鹅，地上一只鹅，天上那只肥鹅鹅爱上地上那只瘦鹅鹅，鹅飞鹅打鹅碰鹅。');
+INSERT INTO `whimsy` VALUES ('5', '2019-09-30', '/whimsy/9.jpg&/whimsy/10.jpg', '天上一只鹅，地上一只鹅，天上那只肥鹅鹅爱上地上那只瘦鹅鹅，鹅飞鹅打鹅碰鹅。');
+INSERT INTO `whimsy` VALUES ('6', '2019-10-01', '/whimsy/11.jpg&/whimsy/12.jpg', '天上一只鹅，地上一只鹅，天上那只肥鹅鹅爱上地上那只瘦鹅鹅，鹅飞鹅打鹅碰鹅。');

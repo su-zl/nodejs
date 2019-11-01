@@ -6,9 +6,11 @@ const time_album=require('./search').time_album;
 const article=require('./search').article;
 const article_detail=require('./search').article_detail;
 const whimsy_content=require('./search').whimsy_content;
-
 const comment=require('./search').comment;
+const user_img=require('./search').user_img;
 
+const fs = require('fs');
+const path = require('path');
 
 
 
@@ -192,6 +194,33 @@ router.post('/api/addComment', async (ctx, next) => {
     // ctx.response.type = 'application/json';
     // ctx.response.body = data;
     ctx.rest({code:'200',message:'提交成功'});
+});
+//头像上传
+router.post('/api/loginWithImg', async (ctx, next) => {
+    const file = ctx.request.files.file;
+    const username=ctx.request.body.username;
+    
+    const  reader=fs.createReadStream(file.path);
+    const timeStamp=Date.parse(new Date());
+    let fiePath=path.join(__dirname,'../static/person/') + `/${file.name}`;
+
+    const upStream=fs.createWriteStream(fiePath);
+
+    reader.pipe(upStream);
+
+
+    let data=null;
+    const max_id=await user_img.max('id');
+    data=await user_img.create({
+       id:max_id+1,
+       name:username,
+       path:'/person'+`/${file.name}`,
+    });
+    console.log('created: ' + JSON.stringify(data));
+    // 设置Content-Type:
+    // ctx.response.type = 'application/json';
+    // ctx.response.body = data;
+    ctx.rest({code:'200',message:'提交成功',path:data.path,name:username});
 });
 
 module.exports=router;

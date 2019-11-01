@@ -101,6 +101,19 @@ md.comment = sequelize.define('comment',{
         freezeTableName: true // Model 对应的表名将与model名相同
     });
 
+md.user_img = sequelize.define('user_img',{
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true
+    },
+    name:Sequelize.STRING(100),
+    path:Sequelize.STRING(100),
+
+}, {
+        timestamps: false,
+        freezeTableName: true // Model 对应的表名将与model名相同
+    });
+
 module.exports=md;
 
 // mysql> select a.* from album a join (select ceil(rand()*max(id)) as id from album) as b on a.id=b.id;
