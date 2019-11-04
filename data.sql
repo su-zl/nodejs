@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80015
 File Encoding         : 65001
 
-Date: 2019-11-01 16:52:38
+Date: 2019-11-04 17:03:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -141,7 +141,7 @@ CREATE TABLE `comment` (
   `date` date NOT NULL,
   `content` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of comment
@@ -164,6 +164,13 @@ INSERT INTO `comment` VALUES ('17', '1', 'whimsy', 'test', '2019-10-17', '1010')
 INSERT INTO `comment` VALUES ('18', '2', 'article', 'test', '2019-10-17', '测试文章');
 INSERT INTO `comment` VALUES ('19', '1', 'article', 'test', '2019-10-18', '123');
 INSERT INTO `comment` VALUES ('20', '2', 'whimsy', 'test', '2019-10-18', '222');
+INSERT INTO `comment` VALUES ('21', '2', 'article', 'test', '2019-11-04', '1104');
+INSERT INTO `comment` VALUES ('22', '2', 'whimsy', 'test', '2019-11-04', '1104');
+INSERT INTO `comment` VALUES ('23', '3', 'whimsy', 'test', '2019-11-04', '测试没有');
+INSERT INTO `comment` VALUES ('24', '7', 'message', 'test', '2019-11-04', '1104');
+INSERT INTO `comment` VALUES ('29', '1', 'whimsy', '一位不愿透露名字的网友', '2019-11-04', '1104001');
+INSERT INTO `comment` VALUES ('30', '8', 'message', 'su', '2019-11-04', 'su');
+INSERT INTO `comment` VALUES ('31', '9', 'message', 'su', '2019-11-04', '留言');
 
 -- ----------------------------
 -- Table structure for user_img
@@ -174,12 +181,13 @@ CREATE TABLE `user_img` (
   `path` varchar(100) DEFAULT NULL,
   `name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_img
 -- ----------------------------
-INSERT INTO `user_img` VALUES ('1', '/book_movie_music/book/book_1.jpg', 'admin');
+INSERT INTO `user_img` VALUES ('1', '/person/admin.jpg', 'admin');
+INSERT INTO `user_img` VALUES ('2', '/person/4569a8c3a5bf923209fb3c4932218f45.jpg', 'su');
 
 -- ----------------------------
 -- Table structure for whimsy

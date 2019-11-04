@@ -169,14 +169,14 @@ router.post('/api/addComment', async (ctx, next) => {
     const type = ctx.request.body.type;
     const content = ctx.request.body.content;
     const date = ctx.request.body.date;
-    const item_id = ctx.request.body.item_id;
+    let item_id = ctx.request.body.item_id;
     if(!item_id){
         const max_item_id=await comment.max('item_id',{
             where:{
                 type:type
             }
         });
-        item_id=max_item_id++;
+        item_id=max_item_id+1;
     }
     const max_id=await comment.max('id');
     
@@ -222,5 +222,25 @@ router.post('/api/loginWithImg', async (ctx, next) => {
     // ctx.response.body = data;
     ctx.rest({code:'200',message:'提交成功',path:data.path,name:username});
 });
+//根据人名查找最近日期头像
+router.get('/api/getLoginUserImg', async (ctx, next) => {
+ 
+    const name=ctx.query.name;
+    let data=null;
 
+    data=await user_img.findAndCountAll({
+        where:{
+            name:name
+        },
+        limit:1,
+        order:[['id','DESC']],
+        attributes: { 
+                exclude: ['id'] //排除
+            }
+    });
+    // 设置Content-Type:
+    // ctx.response.type = 'application/json';
+    // ctx.response.body = data;
+    ctx.rest(data);
+});
 module.exports=router;
