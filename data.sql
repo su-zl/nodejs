@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80015
 File Encoding         : 65001
 
-Date: 2019-11-07 16:35:56
+Date: 2019-11-08 17:02:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -149,7 +149,7 @@ CREATE TABLE `comment` (
   `date` date NOT NULL,
   `content` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of comment
@@ -179,6 +179,7 @@ INSERT INTO `comment` VALUES ('24', '7', 'message', 'test', '2019-11-04', '1104'
 INSERT INTO `comment` VALUES ('29', '1', 'whimsy', '一位不愿透露名字的网友', '2019-11-04', '1104001');
 INSERT INTO `comment` VALUES ('30', '8', 'message', 'su', '2019-11-04', 'su');
 INSERT INTO `comment` VALUES ('31', '9', 'message', 'su', '2019-11-04', '留言');
+INSERT INTO `comment` VALUES ('32', '10', 'message', 'su', '2019-11-07', '11.7测试留言');
 
 -- ----------------------------
 -- Table structure for user_img
