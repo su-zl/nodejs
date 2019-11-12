@@ -1,8 +1,8 @@
 const router=require('koa-router')();
 // const moment = require('moment');
 const book_movie_music=require('./search').book_movie_music;
-const time_travel=require('./search').time_travel;
-const time_album=require('./search').time_album;
+// const time_travel=require('./search').time_travel;
+// const time_album=require('./search').time_album;
 const article=require('./search').article;
 const article_detail=require('./search').article_detail;
 const whimsy_content=require('./search').whimsy_content;
@@ -35,30 +35,57 @@ router.get('/api/book_movie_music', async (ctx, next) => {
 });
 //相册首页
 router.get('/api/time_travel', async (ctx, next) => {
-    let data=null;
-    data =await time_travel;
+    let data=[];
+    // data =await time_travel;
+    // ctx.rest(data);
+    let albumList={
+        knowless:[],
+        primaryschool:[],
+        middleschool:[],
+        highschool:[],
+        university:[],
+        atwork:[]
+    };
+    let fiePath=path.join(__dirname,'../static/timeAlbum');
+    var files = fs.readdirSync(fiePath);
+    for(var f of files){
+        for(item in albumList){
+            if(f.indexOf(item)>-1){
+                albumList[item].push(f)
+            }
+        }
+    }
+    // console.log(albumList);
+    for(item in albumList){
+        var temp={};
+        temp.count=albumList[item].length;
+        temp.type=item;
+        temp.url=albumList[item].length?'/timeAlbum/'+albumList[item][albumList[item].length-1]:'';
+        data.push(temp);
+    }
     ctx.rest(data);
 });
 //相册详情
 router.get('/api/time_album', async (ctx, next) => {
  
     const type = ctx.query.type;
-    let data=null;
+    let photoList=[];
 
-    data=await time_album.findAll({
-        where:{
-            type:type
-        },
-        order:[['url','ASC']], //排序,升序
-        attributes: { 
-            exclude: ['id','type'] //排除
-        }
-    });
+    let fiePath=path.join(__dirname,'../static/timeAlbum');
+    var files = fs.readdirSync(fiePath);
+    for(var f of files){
+            if(f.indexOf(type)>-1){
+                photoList.push({url:'/timeAlbum/'+f})
+            }     
+    }
     // 设置Content-Type:
     // ctx.response.type = 'application/json';
     // ctx.response.body = data;
-    ctx.rest(data);
+    ctx.rest(photoList);
 });
+//
+
+
 //文章首页
 router.get('/api/article', async (ctx, next) => {
  
@@ -66,9 +93,12 @@ router.get('/api/article', async (ctx, next) => {
     let data=null;
 
     data=await article.findAndCountAll({
+        where:{
+            hidden:'0'
+        },
         limit:10,
         offset:10*(pageIndex-1),
-        order:[['id','DESC']]
+        order:[['sort','ASC']]
     });
     // 设置Content-Type:
     // ctx.response.type = 'application/json';

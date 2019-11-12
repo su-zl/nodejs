@@ -29,19 +29,19 @@ md.book_movie_music = sequelize.define('book_movie_music', {
         freezeTableName: true // Model 对应的表名将与model名相同
     });
 //相册首页
-md.time_travel = sequelize.query('select count(*)as count,type,max(url) as url from album group by type',{ type: sequelize.QueryTypes.SELECT});
+// md.time_travel = sequelize.query('select count(*)as count,type,max(url) as url from album group by type',{ type: sequelize.QueryTypes.SELECT});
 //相册详情
-md.time_album = sequelize.define('album', {
-    id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true
-    },
-    type: Sequelize.STRING(20),
-    url: Sequelize.STRING(100)
-}, {
-        timestamps: false,
-        freezeTableName: true // Model 对应的表名将与model名相同
-    });
+// md.time_album = sequelize.define('album', {
+//     id: {
+//         type: Sequelize.INTEGER,
+//         primaryKey: true
+//     },
+//     type: Sequelize.STRING(20),
+//     url: Sequelize.STRING(100)
+// }, {
+//         timestamps: false,
+//         freezeTableName: true // Model 对应的表名将与model名相同
+//     });
 
 //文章首页
 md.article = sequelize.define('article',{

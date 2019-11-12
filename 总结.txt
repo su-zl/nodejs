@@ -25,4 +25,8 @@ default_authentication_plugin=mysql_native_password
 mysql 8.0.15忘记密码重置方法
 https://www.cnblogs.com/jerrys/p/10626408.html
 
-,)1U:S,f,#Z.
+设置所有ip地址可以访问
+https://blog.csdn.net/qq_31939617/article/details/82557569
+
+grant all privileges on *.* to 'root'@'127.0.0.1'identified by '密码';
+将127.0.0.1换成公网的ip地址。
