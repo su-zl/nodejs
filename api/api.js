@@ -12,7 +12,10 @@ const user_img=require('./search').user_img;
 const fs = require('fs');
 const path = require('path');
 
-
+//首页重定向
+router.get('/', async (ctx, next) => {  
+    ctx.response.redirect('./dist/index.html');
+})
 
 router.get('/api/book_movie_music', async (ctx, next) => {
  
