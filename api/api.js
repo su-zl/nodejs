@@ -31,6 +31,23 @@ router.get('/api/book_movie_music', async (ctx, next) => {
             exclude: ['id'] //排除
         }
     });
+    //type=movie 根据文件夹查找图片
+    if(type=="movie"){
+        let fiePath=path.join(__dirname,'../static/book_movie_music/movie');
+        for(let i=0;i<data.length;i++){
+            
+            const name="movie_"+data[i].index+"_";
+            const files = fs.readdirSync(fiePath);
+            let arr=[];
+            for(var f of files){
+                if(f.indexOf(name)>-1){
+                    arr.push('/book_movie_music/movie/'+f);
+                }     
+            }
+            data[i].excerpt=arr.join('&')
+        }
+        
+    }
     // 设置Content-Type:
     // ctx.response.type = 'application/json';
     // ctx.response.body = data;
