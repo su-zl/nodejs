@@ -22,4 +22,3 @@ yarn-error.log*
 
 #my
 /static/dist
-/config.js
