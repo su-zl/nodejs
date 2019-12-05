@@ -1,4 +1,4 @@
-const router=require('koa-router')();
+﻿const router=require('koa-router')();
 // const moment = require('moment');
 const book_movie_music=require('./search').book_movie_music;
 // const time_travel=require('./search').time_travel;
@@ -168,7 +168,7 @@ router.get('/api/whimsy', async (ctx, next) => {
     data1=await whimsy_content.findAndCountAll({
         limit:10,
         offset:10*(pageIndex-1),
-        order:[['id','ASC']]
+        order:[['id','DESC']]
     });
     data=JSON.parse(JSON.stringify(data1));
     // console.log(data);
